@@ -29,3 +29,4 @@ for (i in 1:(length(vals)-1)) {
 }
   cops <- c(cops, list(temp))
 }
+
