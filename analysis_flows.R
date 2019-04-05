@@ -12,17 +12,17 @@ cops <- c()
 for (i in 1:(length(vals) - 1)) {
   u <- pobs(as.matrix(cbind(vals[[i]], vals[[i + 1]])))[, 1]
   v <- pobs(as.matrix(cbind(vals[[i]], vals[[i + 1]])))[, 2]
-  selectedCopula <- BiCopSelect(u, v, familyset = NA)
+  selectedCopula <- BiCopSelect(u, v, familyset = NA, indeptest = TRUE)
   cops <- c(cops, list(selectedCopula))
   if (i == 11) {
     u <- pobs(as.matrix(cbind(vals[[12]], vals[[1]])))[, 1]
     v <- pobs(as.matrix(cbind(vals[[12]], vals[[1]])))[, 2]
-    selectedCopula <- BiCopSelect(u, v, familyset = NA)
+    selectedCopula <- BiCopSelect(u, v, familyset = NA, indeptest = TRUE)
     cop <-
       copulaFromFamilyIndex(selectedCopula$family,
                             selectedCopula$par,
                             selectedCopula$par2)
-    cops <- c(cops, list(selectedCopula))
+    cops <- c(list(selectedCopula), cops)
   }
 }
 
